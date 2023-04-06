@@ -2,7 +2,7 @@ import './App.css';
 import  React, { useState } from 'react';
 import axios from 'axios';
 
-import schema from './validation/formSchema';
+import formSchema from './validation/formSchema';
 import * as yup from 'yup';
 
 import Form from './Components/Form';
@@ -38,7 +38,7 @@ function App() {
   }
 
   const validate = (name, value) => {
-    yup.reach(schema, name)
+    yup.reach(formSchema, name)
       .validate(value)
       .then(() => setFormErrors({ ...formErrors, [name]: ''}))
       .cath( err => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
